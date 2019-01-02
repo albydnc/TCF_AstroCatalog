@@ -32,10 +32,10 @@ public class Star extends skyObject{
   @Override
   public String printProperties(){
     String info = "";
-    info += "Name: "+name+"\nMass (x10³ kg): "+String.format("%e",mass)+"\nSize (km): "+String.format("%e",size)+"\n";
-    info += "Temperature (K): "+String.format("%d",temperature)+"\nLuminosity (x1e22 W): "+String.format("%e",luminosity)+"\n";
-    info += "Density (x10³ kg/m³): "+String.format("%e",density)+"\nVolume (x1e27 m³): "+String.format("%e",volume)+"\n";
-    info += "Surface (x1e18 m²): "+String.format("%e",surface)+"\nGravity (m/s²): "+String.format("%e",gravity)+"\n";
+    info += "Name: "+name+"\nMass (x10³ kg): "+String.format("%.2e",mass)+"\nSize (km): "+String.format("%.2e",size)+"\n";
+    info += "Temperature (K): "+String.format("%d",temperature)+"\nLuminosity (x1e22 W): "+String.format("%.2e",luminosity)+"\n";
+    info += "Density (x10³ kg/m³): "+String.format("%.2e",density)+"\nVolume (x1e27 m³): "+String.format("%.2e",volume)+"\n";
+    info += "Surface (x1e18 m²): "+String.format("%.2e",surface)+"\nGravity (m/s²): "+String.format("%.2e",gravity)+"\n";
     info += "Classification: "+classification+"\nSpectrum Class: "+spectrum+"\n";
     info += (hasSystem ? "Has a planetary system." : "Does not have a planetary system.");
     return info;

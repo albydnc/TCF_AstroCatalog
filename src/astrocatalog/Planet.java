@@ -39,28 +39,27 @@ public class Planet extends skyObject{
   @Override
   public String printProperties(){
     String info = "";
-    info += "Name: "+name+"\nMass (kg): "+String.format("%e",mass)+"\nSize (m): "+String.format("%e",size)+"\n";
-    info += "Temperature (K): "+String.format("%e",temperature);
-    info += "\nDensity (kg/m³): "+String.format("%e",density)+"\nVolume (m³): "+String.format("%e",volume)+"\n";
-    info += "Surface (m²): "+String.format("%e",surface)+"\nGravity (m/s²): "+String.format("%e",gravity)+"\n";
-    info += "Aphelion (m): "+String.format("%e",afelio)+"\nPerihelion (m): "+String.format("%e",perielio)+"\n";
-    info += "Orbit Period (s): "+String.format("%e",orbitPeriod)+"\nRotation Period (s): "+String.format("%e",rotationPeriod)+"\n";
+    info += "Name: "+name+"\nMass (kg): "+String.format("%.2e",mass)+"\nSize (m): "+String.format("%.2e",size)+"\n";
+    info += "Temperature (K): "+String.format("%.2e",temperature);
+    info += "\nDensity (kg/m³): "+String.format("%.2e",density)+"\nVolume (m³): "+String.format("%.2e",volume)+"\n";
+    info += "Surface (m²): "+String.format("%.2e",surface)+"\nGravity (m/s²): "+String.format("%.2e",gravity)+"\n";
+    info += "Aphelion (m): "+String.format("%.2e",afelio)+"\nPerihelion (m): "+String.format("%.2e",perielio)+"\n";
+    info += "Orbit Period (s): "+String.format("%.2e",orbitPeriod)+"\nRotation Period (s): "+String.format("%.2e",rotationPeriod)+"\n";
     info += "Satellites: "+String.format("%d",satellites)+"\nRings: "+String.format("%d",rings)+"\n";
     info += "Classification: "+classification+"\n";
     info += (hasLife ? "Has known living forms" : "Does not have any known living form.");
     return info;
   }
-  public class Satellite{
-    String name;
-    float orbitPeriod;
-    float rotationPeriod;
-    public Satellite(String name,float orbitPeriod,float rotationPeriod ){
-      this.name = name;
-      this.orbitPeriod = orbitPeriod;
-      this.rotationPeriod = rotationPeriod;
+  public class Satellite extends skyObject{
+    String Planet;
+    public Satellite(String name, float mass, float size, String Planet){
+      super(name,mass,size);
+      this.Planet = Planet;
     }
-    public String getName(){
-      return this.name;
+    @Override
+    public String printProperties(){
+      String out = "Name: "+super.name+"\nMass (kg): "+String.format("%.2e",super.mass)+"\nDiameter (m): "+String.format("%.2e",super.size)+"\nSatellite of "+this.Planet;
+      return out;
     }
   }
 }

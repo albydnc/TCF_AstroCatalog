@@ -24,6 +24,7 @@ public class AstroCatalog extends Application {
                                 (float)4.6e14,(float)8.87,(float)2.1e7,(float)2.1e7,(float)1.09e11,(float)1.07e11,0,0,"Terrestrial Planet",false);
     Planet Earth = new Planet("Earth",(float)5.97e24,(float)1.27e7,(float)287,(float)5.514e3,(float)1.08e21,
                                 (float)5.09e14,(float)9.81,(float)85536,(float)3.2e7,(float)1.52e11,(float)1.4711,1,0,"Terrestrial Planet",true);
+    Planet.Satellite Moon = Earth.new Satellite("Moon",(float)7.3e22,(float)1.7e6,"Earth");
     Planet Mars = new Planet("Mars",(float)6.42e23,(float)6805,(float)210,(float)3934,(float)1.63e20,
                                 (float)1.45e14,(float)3.69,(float)86549,(float)5.93e7,(float)2.49e11,(float)2.067e11,2,0,"Terrestrial Planet",false);
     Planet Jupiter = new Planet("Jupiter",(float)1.9e27,(float)1.38e8,(float)152,(float)1.33e3,(float)1.43e24,
@@ -41,7 +42,7 @@ public class AstroCatalog extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AstroCatalog.fxml"));
         Parent root = loader.load();
         Ui controller = (Ui) loader.getController();
-        controller.skyList.getItems().addAll("Sun","Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto");
+        controller.skyList.getItems().addAll("Sun","Mercury","Venus","Earth","Moon","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto");
         controller.skyList.getSelectionModel().selectedItemProperty().addListener(
                 (ObservableValue<? extends String> ov, String old_val, String new_val) -> {
             switch(new_val){
@@ -56,6 +57,9 @@ public class AstroCatalog extends Application {
                     break;
                 case "Earth":
                     controller.detailTxt.setText(Earth.printProperties());
+                    break;
+                case "Moon":
+                    controller.detailTxt.setText(Moon.printProperties());
                     break;
                 case "Mars":
                     controller.detailTxt.setText(Mars.printProperties());
@@ -80,6 +84,7 @@ public class AstroCatalog extends Application {
                     break;
             }
             Image image;
+            System.out.println(new_val);
             image = new Image(getClass().getResourceAsStream("/images/"+new_val+".jpg"));
             controller.objView.setImage(image);
         });
