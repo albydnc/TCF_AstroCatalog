@@ -5,6 +5,7 @@
  */
 package astrocatalog;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +39,8 @@ public class AstroCatalog extends Application {
     Planet Pluto = new Planet("Pluto",(float)1.3e22,(float)2.3e6,(float)45,(float)2030,(float)6.39e18,
                                 (float)1.67e13,(float)0.62,(float)5.4e5,(float)7.88e9,(float)7.4e12,(float)4.4e12,5,0,"Dwarf Planet",false);
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage){
+        try{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("AstroCatalog.fxml"));
         Parent root = loader.load();
         Ui controller = (Ui) loader.getController();
@@ -82,18 +84,19 @@ public class AstroCatalog extends Application {
                 default:
                     controller.detailTxt.setText("No Item Selected");
                     break;
-            }
-            Image image;
-            System.out.println(new_val);
-            image = new Image(getClass().getResourceAsStream("/images/"+new_val+".jpg"));
-            controller.objView.setImage(image);
+            }   
+        Image image;
+        System.out.println(new_val);
+        image = new Image(getClass().getResourceAsStream("/images/"+new_val+".jpg"));
+        controller.objView.setImage(image);      
         });
-        
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("AstroCatalog");
         stage.show();
-        
+     }catch(IOException e){   
+         System.out.println(e);
+     }
     }
 
     /**

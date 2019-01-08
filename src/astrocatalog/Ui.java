@@ -13,8 +13,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 
 public class Ui {
-
-    ObservableList sky = FXCollections.observableArrayList();
    
     @FXML
     private MenuItem Exit;
@@ -41,12 +39,9 @@ public class Ui {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("About");
         alert.setHeaderText(null);
-        alert.setContentText("This app has been created by Gruppo 999.\n"
-                + "- Alberto Perro\n- Daniele Pani\n- Leonardo Misuraca\n- Roberto Belcastro");
+        alert.setContentText("This app has been created by Gruppo 999 \uD83D\uDC31.\n"
+                + "- Alberto Perro\n- Daniele Pani\n- Leonardo Misuraca Giordano\n- Roberto Marasco Belcastro\n");
         alert.showAndWait();
     }
     
-    public void loadSky(){
-        skyList.getItems().addAll(sky);
-    }
 }
